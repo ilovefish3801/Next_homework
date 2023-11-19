@@ -1,3 +1,8 @@
+.header{
+    display: flex;
+    justify-content: space-around;
+}
+
 .container{
     display: flex;
     align-items: center;
@@ -5,5 +10,43 @@
     &__logo{
         font-size: 42px;
         font-weight: 800;
+    }
+
+    &__form{
+        position: relative;
+        &_input{
+            border: 0;
+            border-radius: 8px;
+            
+            background-color: rgb(218, 218, 218);
+
+            height: 26px;
+            width: 200px;
+        }
+        &_image{
+            position: absolute;
+            left: 1px;
+        }
+    }
+}
+
+.navigation{
+    ul{
+        list-style: none;
+        display: flex;
+        align-items: center;
+
+        li{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin-right: 24px;
+
+            a{
+                text-decoration: none;
+                color: black;
+            }
+        }
     }
 }
