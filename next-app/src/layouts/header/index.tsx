@@ -19,7 +19,6 @@ const header = () => {
   const [productsHover, setHoverProducts] = useState<boolean>(false)
   const [langHover, setHoverLang] = useState<boolean>(false)
   const [burger, setBurger] = useState<boolean>(false)
-
   return (
     <>
         <header className={s.header}>
@@ -28,7 +27,7 @@ const header = () => {
           
           <form action="" className={s.form}>
               
-              <input onBlur={()=>{setFocus(false)}} onFocus={()=>{setFocus(true)}} type="text" className={`${s.form__input} ${font.inter}`}/>
+              <input onBlur={(e)=>{e.target.value.length > 0 ? setFocus(true) : setFocus(false)}} onFocus={()=>{setFocus(true)}} type="text" className={`${s.form__input} ${font.inter}`}/>
               <Image src={input_img} alt="" quality={100} className={`${s.form__image} ${focus ? s.hide : s.show}`}></Image>
           
           </form>
@@ -58,8 +57,8 @@ const header = () => {
             </ul>
 
             <div onClick={()=>{
-              setBurger(true)
-            }} className={`${s.navigation__burger} ${burger ? s.active : s.unactive}}`}>
+              burger ? setBurger(false) : setBurger(true)
+            }} className={`${s.navigation__burger} ${burger ? s.active : s.unactive}`}>
               <div></div>
               <div></div>
               <div></div>
@@ -73,6 +72,33 @@ const header = () => {
           </div>
 
           <button className={`${font.inter} ${s.loginBtn}`}>Вхід</button>
+
+          <div className={`${s.mobileMenu} ${burger ? s.active : ''} ${font.inter}`}>
+            <nav className={s.mobileMenu__nav}>
+              <ul>
+                <li style={productsHover ? {marginBottom: 160, position: "relative"} : {marginBottom: 30, position: "relative"}}>
+                  <Link href={'#'}>Товари</Link>
+                  <Image onClick={()=>{productsHover ? setHoverProducts(false) : setHoverProducts(true)}} src={productsHover ? upArrow_img : downArrow_img} alt=''></Image>
+                  <div style={productsHover ? {display: "block"} : {display: "none"}} className={`${s.dropdownProducts} ${s.dropdown}`}>Я не знав що сюди додати</div>
+                </li>
+
+                <li>
+                  <Link href={'#'}>Про нас</Link>
+                </li>
+
+                <li>
+                  <Link href={'#'}>Контакти</Link>
+                </li>
+
+                <li style={{position: "relative"}}>
+                  <div style={{fontSize: 28}}>UA</div>
+                  <Image onClick={()=>{langHover ? setHoverLang(false) : setHoverLang(true)}} src={langHover ? upArrow_img : downArrow_img} alt=''></Image>
+                  <div style={langHover ? {display: "block"} : {display: "none"}} className={`${s.dropdownLang} ${s.dropdown}`}>Я не знав що сюди додати</div>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
         </header>
     </>
   )
