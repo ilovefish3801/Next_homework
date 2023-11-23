@@ -1,4 +1,4 @@
-import React from 'react'
+import {useState} from 'react'
 import Link from 'next/link'
 // image tag
 import Image from 'next/image'
@@ -13,6 +13,9 @@ import font from "@/styles/fonts.module.css"
 
 
 const header = () => {
+  // Hiding search image when person focuses on input
+  let isInputFocused = false
+
   return (
     <>
         <header className={s.header}>
@@ -21,8 +24,8 @@ const header = () => {
           
           <form action="" className={s.form}>
               
-              <input type="text" className={s.form__input}/>
-              <Image src={input_img} alt="" quality={100} className={s.form__image}></Image>
+              <input onBlur={()=>{isInputFocused = false}} onFocus={()=>{isInputFocused = true}} type="text" className={`${s.form__input} ${font.inter}`}/>
+              <Image src={input_img} alt="" quality={100} className={`${s.form__image} ${isInputFocused ? "hide" : "show"}`}></Image>
           
           </form>
   
