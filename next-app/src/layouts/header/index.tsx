@@ -16,18 +16,16 @@ const header = () => {
   return (
     <>
         <header className={s.header}>
-          <div className={s.container}>
             
-            <div className={`${s.container__logo} ${font.inter}`}>Logo</div>
-            
-            <form action="" className={s.container__form}>
-                
-                <input type="text" className={s.container__form_input}/>
-                <Image src={input_img} alt="" quality={100} className={s.container__form_image}></Image>
-            
-            </form>
+          <div className={`${s.logo} ${font.inter}`}>Logo</div>
+          
+          <form action="" className={s.form}>
+              
+              <input type="text" className={s.form__input}/>
+              <Image src={input_img} alt="" quality={100} className={s.form__image}></Image>
+          
+          </form>
   
-          </div>
   
           <nav className={`${font.inter} ${s.navigation}`}>
             <ul>
@@ -45,15 +43,14 @@ const header = () => {
                 <Link href={'#'}>UA</Link>
                 <Image src={downArrow_img} alt=''></Image>
               </li>
-              <li>
-                <Image src={liked_img} alt=''></Image>
-              </li>
-              <li>
-                <Image src={cart_img} alt=''></Image>
-              </li>
             </ul>
           </nav>
-  
+
+          <div className={s.interactionBtns}>
+            <div className={s.interactionBtns__likeBtn}><Link href={'/'}><Image src={liked_img} alt=''></Image></Link></div>
+            <div className={s.interactionBtns__cartBtn}><Link href={'/'}><Image src={cart_img} alt=''></Image></Link></div>
+          </div>
+
           <button className={`${font.inter} ${s.loginBtn}`}>Вхід</button>
         </header>
     </>
