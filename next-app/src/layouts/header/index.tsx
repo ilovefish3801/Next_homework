@@ -1,13 +1,14 @@
 import {use, useState} from 'react'
 import Link from 'next/link'
-// image tag
 import Image from 'next/image'
+
 // images to use
-import input_img from "@/assets/images/Search.png"
-import liked_img from "@/assets/images/Heart.jpg"
-import cart_img from "@/assets/images/Buy.jpg"
-import downArrow_img from "@/assets/images/Arrow_Down.jpg"
-import upArrow_img from "@/assets/images/Arrow_Up.jpg"
+import input_img from "@/assets/images/header/Search.png"
+import liked_img from "@/assets/images/header/Heart.jpg"
+import cart_img from "@/assets/images/header/Buy.jpg"
+import downArrow_img from "@/assets/images/header/Arrow_Down.jpg"
+import upArrow_img from "@/assets/images/header/Arrow_Up.jpg"
+
 // styles
 import s from './header.module.scss'
 import font from "@/styles/fonts.module.css"
@@ -19,16 +20,18 @@ const header = () => {
   const [productsHover, setHoverProducts] = useState<boolean>(false)
   const [langHover, setHoverLang] = useState<boolean>(false)
   const [burger, setBurger] = useState<boolean>(false)
+
+  burger ? document.body.classList.add('fixed') : document.body.classList.remove('fixed')
   return (
     <>
         <header className={s.header}>
             
-          <div className={`${s.logo} ${font.inter}`}>Logo</div>
+          <Link href={'/'} className={`${s.logo} ${font.inter}`}>Logo</Link>
           
           <form action="" className={s.form}>
               
-              <input onBlur={(e)=>{e.target.value.length > 0 ? setFocus(true) : setFocus(false)}} onFocus={()=>{setFocus(true)}} type="text" className={`${s.form__input} ${font.inter}`}/>
-              <Image src={input_img} alt="" quality={100} className={`${s.form__image} ${focus ? s.hide : s.show}`}></Image>
+              <input id='header_input' onBlur={(e)=>{e.target.value.length > 0 ? setFocus(true) : setFocus(false)}} onFocus={()=>{setFocus(true)}} type="text" className={`${s.form__input} ${font.inter}`}/>
+              <label htmlFor="header_input"><Image src={input_img} alt="" quality={100} className={`${s.form__image} ${focus ? s.hide : s.show}`}></Image></label>
           
           </form>
   
