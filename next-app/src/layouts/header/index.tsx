@@ -1,4 +1,4 @@
-import {use, useState} from 'react'
+import {useState, useEffect} from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -21,7 +21,11 @@ const header = () => {
   const [langHover, setHoverLang] = useState<boolean>(false)
   const [burger, setBurger] = useState<boolean>(false)
 
-  burger ? document.body.classList.add('fixed') : document.body.classList.remove('fixed')
+  // adding fixed class to body when burger is opened
+  useEffect(()=>{
+    burger ? document.body.classList.add('fixed') : document.body.classList.remove('fixed')
+  }, [burger])
+
   return (
     <>
         <header className={s.header}>
